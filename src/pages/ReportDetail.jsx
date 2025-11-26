@@ -34,6 +34,20 @@ export default function ReportDetail(){
     setComment('')
   }
 
+  const handleDeleteComment = async (commentId, authorId) => {
+    if (!confirm('Delete this comment?')) return
+    // allow deletion if admin or comment author
+    if (user.role !== 'admin' && user.id !== authorId) {
+      alert('Not allowed to delete this comment')
+      return
+    }
+    const ok = await mockApi.deleteComment(report.id, commentId)
+    if (!ok) return alert('Delete failed')
+    // refresh current report so the comment list updates (stay on page)
+    const updated = await mockApi.getReport(report.id)
+    setReport(updated)
+  }
+
   const handleStatus = async (status) => {
     await mockApi.updateReport(report.id, { status })
     const updated = await mockApi.getReport(report.id)
@@ -59,8 +73,17 @@ export default function ReportDetail(){
         <div className="comments">
           {report.comments.map(c=> (
             <div key={c.id} className="comment">
-              <div className="comment-author">{c.author}</div>
-              <div className="comment-text">{c.text}</div>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                <div>
+                  <div className="comment-author">{c.author}</div>
+                  <div className="comment-text">{c.text}</div>
+                </div>
+                <div>
+                  {(user.role === 'admin' || user.id === c.authorId) && (
+                    <button className="btn-danger" onClick={()=>handleDeleteComment(c.id, c.authorId)}>Delete</button>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>

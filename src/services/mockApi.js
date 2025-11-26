@@ -76,4 +76,14 @@ export const mockApi = {
     writeState(s)
     return c
   },
+  deleteComment: async (reportId, commentId) => {
+    const s = readState()
+    const r = s.reports.find(r => r.id === Number(reportId))
+    if (!r) throw new Error('Report not found')
+    const before = r.comments.length
+    r.comments = r.comments.filter(c => c.id !== Number(commentId))
+    const after = r.comments.length
+    writeState(s)
+    return after < before
+  },
 }
