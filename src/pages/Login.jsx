@@ -38,9 +38,9 @@ export default function Login() {
         </form>
         </div>
 
-        <div style={{justifySelf: 'center'}}>
-        <p className="muted">User role: user@example.com Password: password</p>
-        <p className="muted">Admin role: admin@example.com Password: admin</p>
+        <div className="user-info">
+        <p className="muted_info">User role: user@example.com Password: password</p>
+        <p className="muted_info">Admin role: admin@example.com Password: admin</p>
 
         </div>
     </div>

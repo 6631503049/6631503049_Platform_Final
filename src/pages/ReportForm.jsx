@@ -39,7 +39,10 @@ export default function ReportForm(){
           <input value={roomNumber} onChange={e=>setRoomNumber(e.target.value)} placeholder="e.g., B12-304" />
           <label>Contact</label>
           <input value={contact} onChange={e=>setContact(e.target.value)} placeholder="phone or email" />
-          <button className="btn-primary" type="submit">Submit</button>
+          <div style={{display:'flex',gap:8,marginTop:12}}>
+            <button className="btn-primary" type="submit">Submit</button>
+            <button type="button" className="btn" onClick={()=>nav(-1)}>Back</button>
+          </div>
         </form>
       </div>
     </div>

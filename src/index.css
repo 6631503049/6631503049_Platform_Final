@@ -25,15 +25,18 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  display: block; /* หรือจะลบ display ทิ้งก็ได้ */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+p {
+  overflow-wrap: break-word;
 }
 
 button {
@@ -73,12 +76,12 @@ body {
 }
 
 #root {
-  max-width: 1100px;
-  margin: 10px auto;
+  width: 100%;
+  max-width: 70%;   /* เอาขีดจำกัดออก */
+  margin: 0 auto;         /* ไม่ให้อยู่ตรงกลาง */
   padding: 10px;
-  padding-top: 80px;
-  /* space for fixed navbar */
 }
+
 
 .navbar {
   position: fixed;
@@ -117,12 +120,13 @@ body {
 }
 
 .btn-ghost:hover {
-  color: #646cff;
+  color: var(--accent);
 }
 
 .page {
-  max-width: 900px;
-  margin: 10px auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 16px;
 }
 
@@ -184,6 +188,17 @@ body {
   color: var(--muted)
 }
 
+.user-info{
+  color: var(--muted);
+  position: absolute;
+  top: 70px;
+  left: auto;
+}
+
+.muted_info {
+  display: block;
+}
+
 .small {
   font-size: 12px
 }
@@ -204,17 +219,10 @@ input {
   padding: 8px 16px;
 }
 
-select,
-textarea {
-  width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #e6eef8;
-  margin: 6px 0
-}
 
 textarea {
-  min-height: 80px
+  min-height: 80px;
+  color: var(--navy);
 }
 
 .error {
@@ -235,34 +243,7 @@ textarea {
 }
 
 .btn-primary:hover {
-  background: #646cff;
-}
-
-.btn {
-  background: #e6eef8;
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: none
-}
-
-.btn-danger {
-  background: #ffefef;
-  color: #b91c1c;
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: none
-}
-
-.comments {
-  display: flex;
-  flex-direction: column;
-  gap: 8px
-}
-
-.comment {
-  background: #f8fafc;
-  padding: 8px;
-  border-radius: 8px
+  background: var(--accent);
 }
 
 .comment-author {
@@ -353,7 +334,8 @@ textarea {
 }
 
 .page {
-  padding: 6px 16px
+  padding: 6px 16px;
+  margin-top: 90px;
 }
 
 .hero {
@@ -370,7 +352,6 @@ textarea {
 }
 
 .info-container {
-  width: 60%;
   min-width: 320px;
   margin: 0 auto;       /* ลบ margin-top ออก */
   padding-top: 16px;    /* ใส่ padding ถ้าต้องการเว้นให้พอดีจาก navbar */
@@ -455,12 +436,10 @@ textarea {
   border-radius: 8px;
   border: 1px solid #d1d5db;
   background: white;
-  margin: 6px 0
+  margin: 6px 0;
+  color: var(--navy);
 }
 
-textarea {
-  min-height: 80px
-}
 
 .btn-primary {
   background: var(--navy);
@@ -471,18 +450,54 @@ textarea {
 }
 
 .btn {
-  background: #e6eef8;
+  background: var(--navy);
   padding: 8px 10px;
   border-radius: 8px;
-  border: none
+  border: none;
+  color: white;
+  transition: background 0.25s;
+
+}
+.btn:hover{
+  background: var(--accent);
+}
+
+.btn-InProgress{
+  background: #f59e0b;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  transition: background 0.25s;
+}
+.btn-InProgress:hover{
+  background-color: #ffb940;
+}
+
+.btn-Resolved{
+  background: #10b981;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  transition: background 0.25s;
+}
+
+.btn-Resolved:hover{
+  background-color: #2be4a6;
 }
 
 .btn-danger {
-  background: #ffefef;
-  color: #b91c1c;
+  background: #b91c1c;
+  color: white;
   padding: 8px 10px;
   border-radius: 8px;
-  border: none
+  border: none;
+  transition: background 0.25s;
+}
+.btn-danger:hover{
+  background: rgb(230, 78, 78);
+
 }
 
 .status-badge {
@@ -491,7 +506,8 @@ textarea {
   border-radius: 8px;
   color: white;
   font-weight: 600;
-  margin-left: 8px
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .status-badge.open {

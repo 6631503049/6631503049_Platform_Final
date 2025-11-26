@@ -49,9 +49,9 @@ export default function ReportDetail(){
         <h2>{report.title}</h2>
         <div className="muted">{report.category} • {report.status}</div>
         <p>{report.description}</p>
-  <div className="muted small">Reported by: {report.ownerName}</div>
-  {report.roomNumber && <div className="muted small">Room: {report.roomNumber}</div>}
-  {report.contact && <div className="muted small">Contact: {report.contact}</div>}
+  <div className="muted">Reported by: {report.ownerName}</div>
+  {report.roomNumber && <div className="muted">Room: {report.roomNumber}</div>}
+  {report.contact && <div className="muted">Contact: {report.contact}</div>}
 
         <div className="divider" />
 
@@ -76,8 +76,8 @@ export default function ReportDetail(){
           {canEdit && <button className="btn" onClick={()=>nav(`/report/${report.id}/edit`)}>Edit</button>}
           {user.role === 'admin' && (
             <>
-              <button onClick={()=>handleStatus('In Progress')} className="btn">Mark In Progress</button>
-              <button onClick={()=>handleStatus('Resolved')} className="btn">Mark Resolved</button>
+              <button onClick={()=>handleStatus('In Progress')} className="btn-InProgress">Mark In Progress</button>
+              <button onClick={()=>handleStatus('Resolved')} className="btn-Resolved">Mark Resolved</button>
             </>
           )}
         </div>

@@ -48,15 +48,13 @@ export default function AdminDashboard(){
               <div className="muted small">
                 <span className="meta">{r.ownerName}</span>
                 <span className="meta">{r.category}</span>
-                <span className={`status-badge ${r.status.replace(/\s+/g,'').toLowerCase()}`}>{r.status}</span>
                 {r.roomNumber && <span className="meta">{r.roomNumber}</span>}
                 {r.contact && <span className="meta">{r.contact}</span>}
+                <span className={`status-badge ${r.status.replace(/\s+/g,'').toLowerCase()}`}>{r.status}</span>
               </div>
             </div>
             <div className="list-actions">
               <Link to={`/report/${r.id}`}>🔎 Open</Link>
-              <Link to={`/report/${r.id}/edit`} style={{marginLeft:8}}>✎ Edit</Link>
-              <button className="btn" style={{marginLeft:8}} onClick={()=>handleDelete(r.id)}>🗑️ Delete</button>
             </div>
           </div>
         ))}

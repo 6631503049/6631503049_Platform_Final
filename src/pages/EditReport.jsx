@@ -61,8 +61,8 @@ export default function EditReport(){
           <label>Contact</label>
           <input value={contact} onChange={e=>setContact(e.target.value)} placeholder="phone or email" />
           <div style={{display:'flex',gap:8,marginTop:12}}>
-            <button className="btn-primary" type="submit">Save</button>
             <button type="button" className="btn" onClick={()=>nav(-1)}>Back</button>
+            <button className="btn-primary" type="submit">Save</button>
           </div>
         </form>
       </div>

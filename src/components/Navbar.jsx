@@ -14,11 +14,9 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar--navy">
       <div className="nav-left">
-        <Link to="/reports" className="brand small-brand">Dom Care</Link>
-        <Link to="/admin" className="brand large-brand">Dom Care Connect</Link>
+        <div className="brand">Dom Care Connect</div>
       </div>
       <div className="nav-right">
-        <button className="btn-ghost nav-btn" onClick={()=>navigate(-1)} title="Back">← Back</button>
         {user ? (
           <>
             <span className="nav-user">{user.name}</span>

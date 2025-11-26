@@ -35,14 +35,13 @@ export default function Reports(){
               <Link to={`/report/${r.id}`} className="report-title">{r.title}</Link>
               <div className="muted small">
                 <span className="meta">{r.category}</span>
-                <span className={`status-badge ${r.status.replace(/\s+/g,'').toLowerCase()}`}>{r.status}</span>
                 {r.roomNumber && <span className="meta">{r.roomNumber}</span>}
                 {r.contact && <span className="meta">{r.contact}</span>}
+                <span className={`status-badge ${r.status.replace(/\s+/g,'').toLowerCase()}`}>{r.status}</span>
               </div>
             </div>
             <div className="list-actions">
               <Link to={`/report/${r.id}`}>👁️ View</Link>
-              <Link to={`/report/${r.id}/edit`} style={{marginLeft:8}}>✎ Edit</Link>
             </div>
           </div>
         ))}
